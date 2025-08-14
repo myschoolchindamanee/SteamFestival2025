@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chindamanee School — STEAM FESTIVAL 2025 — Certificate Portal</title>
+  <meta name="description" content="Download your STEAM FESTIVAL 2025 certificate — choose your category and click your name." />
+  <style>
+    :root{
+      --bg1:#ff9a9e;
+      --bg2:#fecfef;
+      --accent1:#ffd24d;
+      --accent2:#ff7ab6;
+      --accent3:#6ea8fe;
+      --card-bg: rgba(255,255,255,0.95);
+      --muted: rgba(4,17,26,0.55);
+      --text-dark: #04111a;
+      --text-bright: #ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial; background: linear-gradient(135deg,var(--bg1) 0%, var(--bg2) 100%); background-size:400% 400%; animation:bgShift 18s ease infinite; color:var(--text-dark); -webkit-font-smoothing:antialiased;}
+    @keyframes bgShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    header{display:flex;align-items:center;gap:18px;padding:18px 28px;position:relative;z-index:6}
+    .logo{width:96px;height:96px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:#042;box-shadow:0 18px 48px rgba(0,0,0,0.18);overflow:hidden}
+    .logo img{width:100%;height:100%;object-fit:contain;display:block}
+    .title-wrap{flex:1}
+    h1{margin:0;font-size:28px;line-height:1.02;color:var(--text-dark);text-shadow:0 6px 20px rgba(255,255,255,0.35)}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:14px}
+    main{padding:18px 28px 80px 28px;position:relative;z-index:6}
+
+    /* background layers */
+    .bg-canvas{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+    .blob{position:absolute;filter:blur(48px);opacity:0.16;mix-blend-mode:screen;animation:blobMove 26s ease-in-out infinite}
+    .b1{width:680px;height:680px;background:radial-gradient(circle at 30% 20%, rgba(255,245,157,0.95), rgba(255,157,157,0.7) 30%, transparent 60%);left:-12%;top:-6%}
+    .b2{width:560px;height:560px;background:radial-gradient(circle at 60% 60%, rgba(138,56,135,0.95), rgba(142,99,255,0.7) 30%, transparent 60%);right:-8%;bottom:-8%}
+    .b3{width:420px;height:420px;background:radial-gradient(circle at 50% 30%, rgba(110,168,254,0.95), rgba(0,229,184,0.65) 30%, transparent 60%);left:12%;bottom:-6%}
+    @keyframes blobMove{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-28px) rotate(6deg)}100%{transform:translateY(0) rotate(0)}}
+
+    /* floating icons */
+    .bg-icons { position: fixed; inset: 0; pointer-events: none; z-index:2; overflow: visible; }
+    .bg-icon { position:absolute; font-size:46px; opacity:0.14; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.18)); animation:iconFloat linear infinite; transform-origin:center; }
+    .i1{left:4%; top:78%; animation-duration:28s; animation-delay: 0s;}
+    .i2{left:16%; top:84%; animation-duration:22s; animation-delay: 2s;}
+    .i3{left:30%; top:80%; animation-duration:30s; animation-delay: 3s;}
+    .i4{left:44%; top:86%; animation-duration:24s; animation-delay: 1s;}
+    .i5{left:58%; top:82%; animation-duration:26s; animation-delay: 2.5s;}
+    .i6{left:72%; top:88%; animation-duration:20s; animation-delay: 4s;}
+    .i7{left:86%; top:80%; animation-duration:32s; animation-delay: 0.5s;}
+    @keyframes iconFloat { 0%{ transform: translateY(0) rotate(0deg) scale(0.98); } 50%{ transform: translateY(-140vh) rotate(180deg) scale(1.06); } 100%{ transform: translateY(-300vh) rotate(360deg) scale(0.98); } }
+
+    /* steam puffs */
+    .steam-puff{position:absolute;border-radius:50%;filter:blur(14px);opacity:0.16;mix-blend-mode:screen;background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(255,255,255,0.15) 35%, rgba(255,255,255,0) 60%); animation:steamRise linear infinite}
+    .p1{left:8%; bottom:6%; width:140px; height:80px; animation-duration:9s; animation-delay:0s;}
+    .p2{left:22%; bottom:10%; width:120px; height:70px; animation-duration:11s; animation-delay:1.6s;}
+    .p3{left:36%; bottom:4%; width:160px; height:90px; animation-duration:10s; animation-delay:0.9s;}
+    .p4{left:52%; bottom:9%; width:110px; height:60px; animation-duration:12s; animation-delay:2.2s;}
+    .p5{left:68%; bottom:7%; width:130px; height:75px; animation-duration:8.6s; animation-delay:0.4s;}
+    .p6{left:82%; bottom:11%; width:100px; height:55px; animation-duration:13s; animation-delay:3s;}
+    @keyframes steamRise{
+      0%{ transform: translateY(0) scale(0.95); opacity:0.16; filter: blur(12px) }
+      30%{ opacity:0.12 }
+      60%{ transform: translateY(-180px) scale(1.12); opacity:0.08; filter: blur(22px) }
+      100%{ transform: translateY(-380px) scale(1.18); opacity:0; filter: blur(28px) }
+    }
+
+    /* decor dots */
+    .decor-dot{position:absolute;border-radius:50%;opacity:0.12;mix-blend-mode:screen;animation:dotDrift linear infinite}
+    .d1{width:22px;height:22px;background:#fff7d0;left:12%;top:40%;animation-duration:24s}
+    .d2{width:30px;height:30px;background:#ffd0ee;left:28%;top:22%;animation-duration:30s}
+    .d3{width:18px;height:18px;background:#bfe6ff;left:62%;top:34%;animation-duration:26s}
+    .d4{width:26px;height:26px;background:#d9ffef;left:80%;top:28%;animation-duration:20s}
+    @keyframes dotDrift{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-18px) scale(1.02)}100%{transform:translateY(0) scale(1)}}
+
+    /* layout grid/cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;position:relative;z-index:6}
+    .card{background:var(--card-bg); border-radius:18px;padding:22px;position:relative;overflow:hidden;cursor:pointer;transition:transform .22s cubic-bezier(.2,.9,.2,1), box-shadow .22s ease;border:1px solid rgba(0,0,0,0.06); color:var(--text-dark)}
+    .card:hover{transform:translateY(-12px);box-shadow:0 40px 100px rgba(0,0,0,0.12)}
+    .cat-title{display:flex;align-items:center;gap:16px}
+    .cat-emoji{font-size:44px}
+    .cat-name{font-weight:900;font-size:20px;color:var(--text-bright); background:linear-gradient(90deg,#ffd24d,#ff7ab6,#6ea8fe); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .cat-sub{color:var(--muted);font-size:13px;margin-top:6px}
+    .pill{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.06);font-size:13px;margin-top:12px;color:var(--text-dark)}
+    .sparkle{position:absolute;right:-30px;top:-20px;opacity:0.08;font-size:140px;transform:rotate(-12deg)}
+
+    /* modal */
+    .modal-backdrop{position:fixed;inset:0;background:linear-gradient(180deg, rgba(2,6,23,0.72), rgba(2,6,23,0.92));display:none;align-items:center;justify-content:center;padding:18px;z-index:60}
+    .modal{width:100%;max-width:1000px;background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));border-radius:16px;padding:18px;box-shadow:0 30px 110px rgba(2,6,23,0.15)}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .search{flex:1;margin-left:12px}
+    .search input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid rgba(0,0,0,0.06);background:rgba(250,250,250,0.98);outline:none;font-size:16px;color:var(--text-dark)}
+    .names{margin-top:16px;max-height:60vh;overflow:auto;padding-right:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+
+    /* name item */
+    .name-item{background:linear-gradient(90deg, rgba(255,255,255,0.98), rgba(255,255,255,0.98));padding:14px;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:transform .14s ease, box-shadow .14s ease;cursor:pointer;border:1px solid rgba(0,0,0,0.06)}
+    .name-item:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(0,0,0,0.08)}
+    .name-left{display:flex;align-items:center;gap:12px}
+    .avatar{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#fff1a6,#ffd24d);display:flex;align-items:center;justify-content:center;color:#042;font-weight:900;font-size:16px;flex-shrink:0;box-shadow:0 10px 26px rgba(0,0,0,0.08)}
+    .name-text{font-size:15px;font-weight:900;color:var(--text-dark)}
+    .name-sub{font-size:12px;color:var(--muted)}
+    .download{padding:10px 14px;border-radius:12px;background:linear-gradient(90deg,var(--accent2),var(--accent3));color:#042;font-weight:900;border:none;cursor:pointer}
+
+    /* particles root */
+    #particles-root{position:fixed;inset:0;pointer-events:none;z-index:9999}
+
+    footer{margin-top:18px;color:rgba(4,17,26,0.55);font-size:13px;padding:8px 28px;text-align:center}
+
+    @media (max-width:720px){
+      .grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+      .logo{width:78px;height:78px}
+      h1{font-size:20px}
+      .name-text{font-size:14px}
+    }
+  </style>
+</head>
+<body>
+  <!-- background decorations -->
+  <div class="bg-canvas" aria-hidden="true">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+
+    <!-- floating STEAM icons (emoji) -->
+    <div class="bg-icons" aria-hidden="true">
+      <div class="bg-icon i1">🔬</div>
+      <div class="bg-icon i2">🧪</div>
+      <div class="bg-icon i3">⚙️</div>
+      <div class="bg-icon i4">🎨</div>
+      <div class="bg-icon i5">📐</div>
+      <div class="bg-icon i6">💡</div>
+      <div class="bg-icon i7">🔭</div>
+    </div>
+
+    <!-- steam puffs -->
+    <div class="steam-puff p1"></div>
+    <div class="steam-puff p2"></div>
+    <div class="steam-puff p3"></div>
+    <div class="steam-puff p4"></div>
+    <div class="steam-puff p5"></div>
+    <div class="steam-puff p6"></div>
+
+    <!-- decorative dots -->
+    <div class="decor-dot d1"></div>
+    <div class="decor-dot d2"></div>
+    <div class="decor-dot d3"></div>
+    <div class="decor-dot d4"></div>
+  </div>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Chindamanee School Logo" />
+    </div>
+    <div class="title-wrap">
+      <h1>Chindamanee School — <span style="color:#042">STEAM FESTIVAL 2025</span></h1>
+      <p class="lead">Bright, colorful & fun — click a category, then your name to download your certificate (PDF). Hover & click for playful effects!</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="categoryGrid" aria-live="polite"></div>
+
+    <footer>
+      Upload this <code>index.html</code> to your repo root and put the category folders (with PDFs) beside it. Filenames and folders are case-sensitive; keep them exactly as listed.
+    </footer>
+  </main>
+
+  <!-- modal -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <div class="modal-header" style="align-items:start">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="width:68px;height:68;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:900;color:#042">CAT</div>
+          <div>
+            <div id="modalTitle" style="font-size:18px;font-weight:900;color:var(--text-dark)"></div>
+            <div id="modalCount" style="font-size:13px;color:var(--muted);margin-top:6px"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center">
+          <div class="search"><input id="searchInput" placeholder="Search name..." aria-label="Search names" /></div>
+          <button class="download" id="closeBtn" style="background:rgba(0,0,0,0.06);color:var(--text-dark);font-weight:800;border:1px solid rgba(0,0,0,0.06);padding:8px 12px;border-radius:10px">Close</button>
+        </div>
+      </div>
+
+      <div class="names" id="namesList" tabindex="0" aria-label="List of participants"></div>
+    </div>
+  </div>
+
+  <!-- particles container (for click effects) -->
+  <div id="particles-root" aria-hidden="true"></div>
+
+  <script>
+    // Data (exactly as provided)
+    const data = {
+      "DIY Rubber Band Plane Launching": [
+        "Aayush Upadhyay","Ahmadbinn Tareq","Aisha Shahab Al Marri","Aliza","Anawin Salem","Chanderkant Pandey","Farhan Malik","Gulbahar Guvanchmyradova","Jiratchaya","Klarissa pawa","Krittiphat Tangvattanatam","Muhammad Umar Nauman","Myat Thazin Khine","Natthanon suchahiran","Peerapol Chokwanamnuai","Pichaiyut Yatacot","Royyim","Tat Boonpornpichet"
+      ],
+      "Public Speaking": [
+        "Aayush Upadhyay","Ahmad Bin Tareq","Aisha Shahab Navalta Al Marri","Alessia Piedrahita","Anawin Salem","Azmina Diwan","Chanderkant Pandey","Chennan Nakphoo","Chingun Yajai","Ekrem Esat Mendi","EunSol Woo","Gulbahar Guvanchmyradova","Hasan Banna","Janaru Makhsat","Khalil Hendra Verdian","Leyli Rozyyeva","Margaret Majorie Barnard","Muhammad Shahzad","Myat Thazin Khine","Nikitha Kuppuswamy Vijayakumar","Nopwadee Wongsangiam","Nuoyuan Chen","Osman Cholak","Pavani Panday","Peeranat Amarananthakit","Phuritat Tangvattanatam","Raiyan Rahman","Rydvanali Yessimkhan","Soha Shahzad","Suha Malik","Tanaphat Chaiwanchana","Xinyu Shi","Zahide Hilal Parilti","Zehra Mendi","Ziva Abbigail Barnard"
+      ],
+      "Quiz Masters": [
+        "Aaliya Singnamwong","Ahmad Bin Tareq","Alexei Ray Yeagershporin","Aliza Chen Fei Wai","Amalia Bashlykova","Areeyah Avageline Dulude","Asato Deevongkij","Aung Nyein Chan","Avishi Mehrotra","Chonnaphat Thumrat","Chuu Nadi Lwin","Esat Guvanchmyradov","Hpone Pyae Thi Ha","Jemal Ikhsan Yessimkhan","Jittrawee Janjamroon","Kanpitcha Pasaprates","Katherina Khanijou","Kevin Koder","Kittisak Sachahiran","Kris Khanijou","Layaung Phong Myint","Nantachat Korkietnan","Oscar Ruan","Osman Cholak","Patharadit Budhnarakul","Petpairin Chotwannapong","Phatthadol Chairattanathananon","Punchida Angsukulthom","Ratchanon Deachapun","Royyim Bindusmita","Santisiri Buamuenchol","Sethwarich Arpajamjarat","Sett Linn Lett","Sophitthanatcha Chaviengpop","Swan Htet Aung","Tanut Puengmongkholchaikij","Tawee Namnamthasith","Tawee Namnanthasith","Thanaphoom Sampancharoen","Thanon Torung","Wipada Sakolnuruk"
+      ],
+      "Robot Maze Race": [
+        "Heint Khant Maung","Intouch Rampai","Jessada Odlin","Jirat Suebhirun","Kevin Kroder","Saw Thit Lwin Htet","Shlok Chand","Tawee Namnanthasith","Thanakrit Pawa","Thaw Zin Nyi"
+      ],
+      "Science show": [
+        "Adichat Sirisukhaanand","Agayusup Rozyyev","Eun Sol Woo","Hasan Banna","Hasan Ertan","Klarissa Pawa","Leyli Rozyyeva","Phuritat Tangvattanatam","Raiyan Rahman","Shahin Cholak","Suha Malik","Suphanut Rai","Zehra Mendi"
+      ],
+      "Spaghetti & Marshmallow Tower": [
+        "Aarav Detchaiyasak","Ahmad Bin Tareq","Aliza Chen Fei Wai","Chuu Nadi Lwin","Hana Marie Hamill","Ian Katnikov","Katherina Khanijou","Muhammad Zain Nauman","Nantachat Korkietnan","Nevra Sayin","Orhan Ertan","Panyaraht Ifeanyichukwu","Punchida Angsukulthorn","Qian Qian Zhou","Reuben Eldho Mathew","Sophitthanatcha Chaviengpop","Thanasa Chuenkwanlert","Thawanrat Kijsrisakul"
+      ],
+      "STEAM STREET-Game Category": [
+        "Aandeep Singh","Aarohi Dubey","Ahmad Hassan","Ahr Nan","Aisha Shahab Navalta Al Marri","Azmina Diwan","Benjapron Laikrah","Gulbahar Guvanchmyradova","Hamza Hossain Hadi","Huzaifa Hussain","Klarissa Pawa","Krittiphat Tangvattanatam","Lwin Phone Pyae","Mona Sangroula","Muhammad Shahzad","Myat Thazin Khine","Nesha Kittipunnapha","Nicholas","Phuririn Narapattaveebhorn","Princeshan Gulati","Raihana Leelard","Sarisa Pichayapa","Thant Thurain","Thawin Kantithatkun"
+      ],
+      "STEAM STREET-Integrated Category": [
+        "Aphiwish Jongpipatthanasuk","Boonyaporn Matragool","Ekem Mendi","Hugo Ruan","Muna Songweera","Peerapol Chokwanamnuai","Supawich Silapa","Warot Kongsoontornkijkun"
+      ],
+      "TECHNICAL TEAM": [
+        "Peeranat Thoumprathom"
+      ],
+      "Upcycled Fashion Show": [
+        "Aaliya Singnamwong","Aisha Shahab Navalta Al Marri","Alessia Piedrahita","Azmina Diwan","Chanyaphak Aukramaeteepun","Gulbahar Guvanchmyradova","Janaru Makhsat","Jiratchaya Tangyusuk","Kaewta Kitinai","Lingqi Chen","Margaret Majorie Barnard","Myat Thazin Khine","Nevra Sayin","Nopwadee Wongsangiam","Pavani Panday","Phuritat Tangvattanatam","Raihana Leelard","Venicenarin Inchandr","Ziva Abbigail Barnard"
+      ],
+      "Young Scientist": [
+        "Aarav Detchaiyasak","Alessia Piedrahita","Aryan Shukla","Chanyaphak Aukramaeteepun","Ethan Jasiel Sanchez Reynoso","Htoo Myat Moe Oo","Janaru Makhsat","Jaturawich Khotmungkhun","Jiratchaya Tangyusuk","Kaewta Kitinai","Kavinwit Tanasiribunchai","Kornthanat Trakultanachai","Kridtiteepongpit Chaviengpop","Marjan Hussain","Mohammad Bin Tareq","Pavani Panday","Peeranat Amarananthakit","Phumiphat Budhnarakul","Rydvanali Yessimkhan","Soha Shahzad","Zahide Hilal Parilti","Ziva Abbigail Barnard"
+      ],
+      "JUDGES": [
+        "Dr. Asma Parilti","Mr. Eugene Dickson","Mr. Jesse Johnson","Mr. Karl Robinson","Mr. Murat Mendi","Mr. Myrat Hezretov","Mr. Nozimjon Musoev","Mr. Serdar Rozyyev","Ms. Khawanjai Traikaew","Ms. Menchie Reynoso"
+      ]
+    };
+
+    const emojis = {
+      "DIY Rubber Band Plane Launching":"🛩️",
+      "Public Speaking":"🎤",
+      "Quiz Masters":"🧠",
+      "Robot Maze Race":"🤖",
+      "Science show":"🔬",
+      "Spaghetti & Marshmallow Tower":"🍝",
+      "STEAM STREET-Game Category":"🎮",
+      "STEAM STREET-Integrated Category":"🧩",
+      "TECHNICAL TEAM":"🛠️",
+      "Upcycled Fashion Show":"👗",
+      "Young Scientist":"🔭",
+      "JUDGES":"🏅"
+    };
+
+    // build category cards
+    const grid = document.getElementById('categoryGrid');
+    Object.keys(data).forEach(folderName=>{
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="cat-title">
+          <div class="cat-emoji">${emojis[folderName] || '📁'}</div>
+          <div>
+            <div class="cat-name">${folderName}</div>
+            <div class="cat-sub">${data[folderName].length} certificate(s)</div>
+          </div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="pill">Click to open</div>
+        <div class="sparkle">✨</div>
+      `;
+      card.addEventListener('click',(e)=>{ spawnClickBurst(e); openModal(folderName); });
+      card.tabIndex = 0;
+      card.addEventListener('keydown', (ev)=>{ if(ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); card.click(); } });
+      grid.appendChild(card);
+    });
+
+    // modal logic
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCount = document.getElementById('modalCount');
+    const namesList = document.getElementById('namesList');
+    const searchInput = document.getElementById('searchInput');
+    const closeBtn = document.getElementById('closeBtn');
+    const particlesRoot = document.getElementById('particles-root');
+    let activeFolder = null;
+
+    function encodeFileName(name){ return encodeURIComponent(name) + '.pdf'; }
+    function encodeFolder(folder){ return encodeURIComponent(folder) + '/'; }
+
+    function openModal(folder){
+      activeFolder = folder;
+      modalTitle.textContent = folder;
+      modalCount.textContent = `${data[folder].length} certificate(s)`;
+      renderNames(data[folder]);
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden','false');
+      searchInput.value = '';
+      setTimeout(()=>searchInput.focus(), 80);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(){
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      activeFolder = null;
+    }
+
+    function renderNames(list){
+      namesList.innerHTML = '';
+      if(!list || list.length === 0){
+        namesList.innerHTML = '<div style="padding:12px;color:var(--muted)">No names found.</div>';
+        return;
+      }
+      list.forEach(name=>{
+        const item = document.createElement('div');
+        item.className = 'name-item';
+        item.innerHTML = `
+          <div class="name-left">
+            <div class="avatar">${initials(name)}</div>
+            <div>
+              <div class="name-text">${name}</div>
+              <div class="name-sub">Click to download certificate</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="spark-ico" title="Congrats!">✨</div>
+            <button class="download" aria-label="Download ${name}">Download</button>
+          </div>
+        `;
+        // click row -> download
+        item.addEventListener('click', (e)=>{
+          if(e.target.tagName.toLowerCase() === 'button') return;
+          spawnClickBurst(e);
+          triggerDownload(activeFolder, name);
+        });
+        // button click
+        item.querySelector('button').addEventListener('click', (e)=>{
+          e.stopPropagation();
+          spawnClickBurst(e);
+          triggerDownload(activeFolder, name);
+        });
+        namesList.appendChild(item);
+      });
+    }
+
+    function initials(name){
+      const parts = name.trim().split(/\s+/).filter(Boolean);
+      if(parts.length === 0) return '';
+      if(parts.length === 1) return parts[0].slice(0,2).toUpperCase();
+      return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
+    }
+
+    function triggerDownload(folder,name){
+      const url = encodeFolder(folder) + encodeFileName(name);
+      window.open(url,'_blank');
+      showToast(`${name} — opening certificate`);
+    }
+
+    // search
+    searchInput.addEventListener('input', ()=>{
+      if(!activeFolder) return;
+      const q = searchInput.value.trim().toLowerCase();
+      const list = data[activeFolder].filter(n => n.toLowerCase().includes(q));
+      modalCount.textContent = `${list.length} certificate(s) found`;
+      renderNames(list);
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click',(e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+    // small toast
+    function showToast(msg){
+      const t = document.createElement('div');
+      t.textContent = msg; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='36px'; t.style.padding='10px 16px'; t.style.background='rgba(4,17,26,0.85)'; t.style.borderRadius='10px'; t.style.zIndex=99999; t.style.color='#fff';
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.style.transition='opacity 320ms'; t.style.opacity=0 },1200);
+      setTimeout(()=>t.remove(),1600);
+    }
+
+    // click effects: bubble + colorful particles
+    function spawnClickBurst(e){
+      const pageX = (e.pageX !== undefined) ? e.pageX : (e.touches && e.touches[0].pageX) || window.innerWidth/2;
+      const pageY = (e.pageY !== undefined) ? e.pageY : (e.touches && e.touches[0].pageY) || window.innerHeight/2;
+      createBubble(pageX, pageY);
+      createParticles(pageX, pageY);
+    }
+
+    function createBubble(x,y){
+      const bubble = document.createElement('div');
+      bubble.style.position = 'absolute';
+      bubble.style.left = x + 'px';
+      bubble.style.top = y + 'px';
+      bubble.style.width = '18px';
+      bubble.style.height = '18px';
+      bubble.style.borderRadius = '50%';
+      bubble.style.background = 'radial-gradient(circle at 30% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.12) 60%)';
+      bubble.style.transform = 'translate(-50%,-50%)';
+      bubble.style.zIndex = 99999;
+      particlesRoot.appendChild(bubble);
+      bubble.animate([
+        { transform: 'translate(-50%,-50%) scale(1)', opacity: 0.95 },
+        { transform: 'translate(-50%,-50%) scale(6)', opacity: 0 }
+      ], { duration: 700, easing: 'cubic-bezier(.2,.9,.2,1)' });
+      setTimeout(()=>bubble.remove(), 760);
+    }
+
+    function createParticles(x,y){
+      const colors = ['#ffd24d','#ff7ab6','#6ea8fe','#00e5b8','#ffcf6e'];
+      const count = 18;
+      for(let i=0;i<count;i++){
+        const p = document.createElement('div');
+        p.style.position = 'absolute';
+        p.style.borderRadius = '50%';
+        const size = Math.floor(Math.random()*9) + 6;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.background = colors[Math.floor(Math.random()*colors.length)];
+        p.style.zIndex = 99999;
+        p.style.pointerEvents = 'none';
+        particlesRoot.appendChild(p);
+
+        const angle = Math.random()*Math.PI*2;
+        const speed = 60 + Math.random()*220;
+        const dx = Math.cos(angle)*speed;
+        const dy = Math.sin(angle)*speed - (20 + Math.random()*40);
+        const rotate = (Math.random()*360);
+
+        p.animate([
+          { transform: `translate(0px,0px) rotate(0deg) scale(1)`, opacity: 1 },
+          { transform: `translate(${dx}px, ${dy}px) rotate(${rotate}deg) scale(0.6)`, opacity: 0 }
+        ], { duration: 700 + Math.random()*300, easing: 'cubic-bezier(.2,.9,.2,1)' });
+
+        setTimeout(()=>{ try{ p.remove() } catch(e){} }, 1100);
+      }
+    }
+
+    // initial card load animation
+    document.addEventListener('DOMContentLoaded', ()=>{
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((c,i)=>{ c.style.opacity=0; c.style.transform='translateY(18px)'; setTimeout(()=>{ c.style.transition='opacity .6s cubic-bezier(.2,.9,.2,1), transform .6s cubic-bezier(.2,.9,.2,1)'; c.style.opacity=1; c.style.transform='translateY(0)'; }, 80*i); });
+    });
+  </script>
+</body>
+</html>
